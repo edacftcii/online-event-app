@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Etkinlik Arama</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Etkinlik Arayın</h2>
+        <form method="get" action="/search">
+            <input type="text" name="q" placeholder="Etkinlik başlığı..." value="{{ query }}">
+            <button type="submit">Ara</button>
+        </form>
+
+        {% if events %}
+            <ul>
+                {% for event in events %}
+                    <li>
+                        <a href="/event/{{ event['id'] }}">
+                            <strong>{{ event['title'] }}</strong>
+                        </a> - {{ event['location'] }}<br>
+                        {{ event['description'] }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% elif query %}
+            <p>Sonuç bulunamadı.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

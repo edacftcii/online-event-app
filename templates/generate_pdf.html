@@ -1,0 +1,41 @@
+<!-- templates/generate_pdf.html -->
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>PDF Oluştur</title>
+    <style>
+        @font-face {
+            font-family: "DejaVu";
+            src: url("/static/fonts/DejaVuSans.ttf") format("truetype");
+        }
+        body {
+            font-family: "DejaVu", sans-serif;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        input {
+            padding: 8px;
+            width: 300px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>PDF oluşturmak için bir URL girin</h1>
+    <form method="POST">
+        <input type="text" name="url" placeholder="https://example.com" required />
+        <button type="submit">PDF Oluştur</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ event['title'] }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>{{ event['title'] }}</h2>
+        <p><strong>Yer:</strong> {{ event['location'] }}</p>
+        <p>{{ event['description'] }}</p>
+
+        <h3>Yorumlar</h3>
+        <ul>
+            {% for comment in comments %}
+                <li><strong>{{ comment['username'] }}:</strong> {{ comment['content']|safe }}</li>
+            {% endfor %}
+        </ul>
+
+        <form method="POST">
+            <textarea name="content" placeholder="Yorumunuzu yazın..." required></textarea><br>
+            <button type="submit">Yorum Yap</button>
+        </form>
+    </div>
+</body>
+</html>
